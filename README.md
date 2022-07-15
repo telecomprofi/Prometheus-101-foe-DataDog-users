@@ -28,6 +28,9 @@ A: It is sever:port/metrics with specific name that provideds metrics for scrapi
 Q: What happens if target/enpoint is down?  
 A: you can create rule isDown and alert on this event.
 
+Q: What is PromQL?
+A: It is query language that used to build request to TSDB. Also used in Grafana, and Alertmanager whenever you have to extract specific metric data from TSDB.
+
 
 
 
