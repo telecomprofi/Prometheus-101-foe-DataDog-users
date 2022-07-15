@@ -1,6 +1,6 @@
-# Prometheus-101-foe-DataDog-users
+# Prometheus-101-for-DataDog-users
 
-## Q& A
+## Q & A
 #### 
 Q: What is Prometheus?  
 A: is a self-hosted OpenSource Time-Series DB that stores metrics (in two words metric db)
@@ -15,12 +15,12 @@ Alert manager runs on its own <alert-manager-IP>:9093 by default and has its own
 Q: Can I use prometheus exporters, alerts and charts without Prometheus tsdb?  A: Yes! with VictoriaMetrics & Grafana & alertmanager.
 
   
-Q: What is default port on node exporter used by Prometheus server to scrape metrics?   A: 5000?
+Q: What is default port on node exporter used by Prometheus server to scrape metrics?   A: The node_exporter listens on HTTP port 9100.
 
 
 
 
-### Entity names
+### Lingo, Entity names
 
 #### Agent: 
 
