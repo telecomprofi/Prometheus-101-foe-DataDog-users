@@ -3,19 +3,24 @@
 ## Q & A
 #### 
 Q: What is Prometheus?  
-A: is a self-hosted OpenSource Time-Series DB that stores metrics (in two words metric db)
+A: is a self-hosted OpenSource Time-Series DB that stores metrics (in two words metric db).
 
-Q: What are others TSDB out there beside Prometheus?  A: InfluxDB, VictoriaMetrics
+Q: What are others TSDB out there beside Prometheus?  
+A: InfluxDB, VictoriaMetrics
 
-Q: Where is config of prometheus stored?  A: usaully it is prometheus.yml, also could be alterd by -config argument when service is started 
+Q: Where is config of prometheus stored?  
+A: usaully it is prometheus.yml, also could be alterd by -config argument when service is started 
 
-Q: What is alert manager in Prometheus?  A: It is separate service (optional) that allows deduplication, silencing, and routing/sending of metrics-based alerts to e-mail, IM (slack) etc. You let know Prometheus if alert manager is there by configuring 'alertmanager' section in prometheus.yml config and 'alertmanager rules' that point to another yaml with alert rules (what is name, threshhold to fire, etc) specific metric-based alert (e.g. Node is downm, disk space  is low, free memory is low etc)
+Q: What is alert manager in Prometheus?  
+A: It is separate service (optional) that allows deduplication, silencing, and routing/sending of metrics-based alerts to e-mail, IM (slack) etc. You let know Prometheus if alert manager is there by configuring 'alertmanager' section in prometheus.yml config and 'alertmanager rules' that point to another yaml with alert rules (what is name, threshhold to fire, etc) specific metric-based alert (e.g. Node is downm, disk space  is low, free memory is low etc)
 Alert manager runs on its own <alert-manager-IP>:9093 by default and has its own alermanager.yml config file and secrets.yaml where you list alert receivers and API keys respectively. 
 
-Q: Can I use prometheus exporters, alerts and charts without Prometheus tsdb?  A: Yes! with VictoriaMetrics & Grafana & alertmanager.
+Q: Can I use prometheus exporters, alerts and charts without Prometheus tsdb?  
+A: Yes! with VictoriaMetrics & Grafana & alertmanager.
 
   
-Q: What is default port on node exporter used by Prometheus server to scrape metrics?   A: The node_exporter listens on HTTP port 9100.
+Q: What is default port on node exporter used by Prometheus server to scrape metrics?  
+A: The node_exporter listens on HTTP port 9100.
 
 
 
