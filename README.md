@@ -29,14 +29,16 @@ A: The node_exporter listens on HTTP port 9100.
 
 #### Agent: 
 
-##### DataDog -> **DataDog agent**  (binary that you as SRE have to install on your server/node to collect and send/aka Push metrics and logs to DataDog SaaS. Will use API key to let SaaS server know where to put your metrics on the server.
+##### DataDog -> **DataDog agent**. 
+  (binary that you as SRE have to install on your server/node to collect and send/aka Push metrics and logs to DataDog SaaS. Will use API key to let SaaS server know where to put your metrics on the server.
 
-##### Prometheus -> **node exporter**, **black box exporter** - agents that will 'expose' aka offere to poll your metrics for collection by Prometheus server. Process is called 'scraping', metrics sraping.  agents are called 'targets' in prometheus.yml config file. **Black-box exporter** is a name for Synthetic test service that make GET/Post to one of your endpoints and checks response, then allow you to calculate how much time service was healthy and how much it did not return OK/200 + stuff like latency of the request/responce, its body etc.
+##### Prometheus -> **node exporter**, **black box exporter**. 
+  agents that will 'expose' aka offere to poll your metrics for collection by Prometheus server. Process is called 'scraping', metrics sraping.  agents are called 'targets' in prometheus.yml config file. **Black-box exporter** is a name for Synthetic test service that make GET/Post to one of your endpoints and checks response, then allow you to calculate how much time service was healthy and how much it did not return OK/200 + stuff like latency of the request/responce, its body etc.
 
 #### WebUI:
-<prometheus-server-ip:9090>
-<alertmanager-server-ip:9030>
-Prometheus has limited web-ui and metrics explorer to see config, metrics being collected, alerts, etc. Usually separate dashboard solution is used for displaying grahs/charts -> Grafana. Prometheus would act as datasource for Grafana.
+<prometheus-server-ip:9090>. 
+<alertmanager-server-ip:9030>. 
+Prometheus has limited web-ui and metrics explorer to see config, metrics being collected, alerts, etc. Usually separate dashboard solution is used for displaying grahs/charts -> **Grafana**. Prometheus would act as datasource for **Grafana**.
 
 <datadog.com /region>
 
