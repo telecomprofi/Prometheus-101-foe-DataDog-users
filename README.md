@@ -21,6 +21,12 @@ A: Yes! with VictoriaMetrics & Grafana & alertmanager.
   
 Q: What is default port on node exporter used by Prometheus server to scrape metrics?  
 A: The node_exporter listens on HTTP port 9100.
+  
+Q: Waht is Target?
+A: It is sever:port/metrics with specific name that provideds metrics for scraping by Prometheus server. It has state: up/down, and labels: job: name, instance:<ip-addr:port> etc.
+  
+Q: What happens if target/enpoint is down?  
+A: you can create rule isDown and alert on this event.
 
 
 
