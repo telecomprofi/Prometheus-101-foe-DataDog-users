@@ -75,8 +75,62 @@ res = requests.post("http://alertmanager:9093/api/v2/silences", json={
 res.raise_for_status()
 silenceId = res.json()["silenceID"]
   ```
-also do chmod +x ./silenec-alert.py 
-  and run as ./silence-alert.py
+also do 
+  ```
+  chmod +x ./silenec-alert.py
+  ```
+  and run as 
+  ```./silence-alert.py```
+  
+  
+  Q: How to expose Alertmanager through virtual host Nginx reverse proxy?
+  A: 
+  https://rtfm.co.ua/prometheus-alertmanager-web-ui-i-silence-alertov/
+  
+  1. add to command section of alertmanager coonfig yaml file ( /etc/alertmanager/config.yaml):
+  ```
+  /etc/prometheus/alertmanager_config.yml:/etc/alertmanager/config.yml
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--web.route-prefix=/alertmanager'
+      - '--web.external-url=https://dev.monitor.example.com/alertmanager'
+  ```
+  2. Configure Ngingx virtual host:
+  add new upstream section to nginx config that points to alertmanager IP address: port & restart nginx:
+  ```
+  upstream alertmanager {
+    server 127.0.0.1:9093;
+  }
+  ```
+  
+  3. Configure Nginx proxy to redirect/proxy all request to /alertmanager path to specific upstream cofigured above:
+  ```
+      location /alertmanager {
+        
+        proxy_redirect          off;            
+        proxy_set_header        Host            $host;
+        proxy_set_header        X-Real-IP       $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://alertmanager$request_uri;
+    }
+  ```
+  4. restart nginx & alertmanager
+  5. update Prometheus config with new path_prefix to point to the above virtual host
+  ```...
+alerting:
+  alertmanagers:
+  - path_prefix: "/alertmanager/"
+    static_configs:
+    - targets:
+      - alertmanager:9093
+...
+  ```
+  6. restart Prometheus & check if there is no errors in logs related to alerts sendign like below:
+  Prometheus: “Error sending alert” err=”bad response status 404 Not Found”
+  ```caller=notifier.go:527 component=notifier alertmanager=http://alertmanager:9093/api/v1/alerts count=3 msg=”Error sending alert” err=”bad response status 404 Not Found”
+  ```
+  
+  
 
 
 
