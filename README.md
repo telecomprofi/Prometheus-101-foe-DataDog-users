@@ -54,7 +54,8 @@ Prometheus has limited web-ui and metrics explorer to see config, metrics being 
   
  Q: How to mute aka Silence alert with Python script for specific period of time via REST API to alert manager?
   A: You need matchers (aka alert labels, lile job: myjob, or instance:<servername> and silence durarion - 1h in example below:
-  ``` silence-alert.py 
+  ``` 
+  # silence-alert.py 
   #!/usr/bin/python3
 import requests
 import socket
@@ -80,7 +81,8 @@ also do
   chmod +x ./silenec-alert.py
   ```
   and run as 
-  ```./silence-alert.py```
+  ```./silence-alert.py
+  ```
   
   
   Q: How to expose Alertmanager through virtual host Nginx reverse proxy?
@@ -127,7 +129,8 @@ alerting:
   ```
   6. restart Prometheus & check if there is no errors in logs related to alerts sendign like below:
   Prometheus: “Error sending alert” err=”bad response status 404 Not Found”
-  ```caller=notifier.go:527 component=notifier alertmanager=http://alertmanager:9093/api/v1/alerts count=3 msg=”Error sending alert” err=”bad response status 404 Not Found”
+  ```
+  caller=notifier.go:527 component=notifier alertmanager=http://alertmanager:9093/api/v1/alerts count=3 msg=”Error sending alert” err=”bad response status 404 Not Found”
   ```
   
   
